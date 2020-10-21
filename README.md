@@ -1,4 +1,4 @@
-This repo contains two codebases: [web](https://github.com/clerestoryio/fullstack-challenge/tree/main/web) contains a React app that is powered by a REST API in the   [api](https://github.com/clerestoryio/fullstack-challenge/tree/main/api) directory.
+This repo contains two codebases: [web](https://github.com/clerestoryio/fullstack-challenge/tree/main/web) contains a React app that is powered by a REST API in the   [api](https://github.com/clerestoryio/fullstack-challenge/tree/main/api) directory. The API uses [TypeORM](https://typeorm.io/) to talk to a SQLite database.
 
 ## Setup
 1. Install Node: https://nodejs.org/en/download/
