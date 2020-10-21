@@ -18,6 +18,9 @@ function App({ classes }: any) {
       completed: false,
     };
     e.target.name.value = "";
+
+    // TODO: Write to the database and update the list of todos
+    console.log(todo);
   };
 
   const getTodos = async () => {
