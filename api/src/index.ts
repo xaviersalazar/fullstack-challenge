@@ -1,5 +1,4 @@
 import express from "express";
-import bodyParser from "body-parser";
 import cors from "cors";
 import { createConnection } from "typeorm";
 import { SnakeNamingStrategy } from "typeorm-naming-strategies";
@@ -9,8 +8,8 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.get("/todos", async (req, res) => {
   const items = await Todo.find({
