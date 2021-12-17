@@ -1,7 +1,6 @@
+import { Container, Paper } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import { withStyles } from "@material-ui/core/styles";
-import { Container } from "@material-ui/core";
 
 type Todo = {
   id?: number;
@@ -9,7 +8,7 @@ type Todo = {
   completed: boolean;
 };
 
-function App({ classes }: any) {
+function App() {
   const [todos, setTodos] = useState<Array<Todo>>([]);
   const handleSubmit = (e: any) => {
     e.preventDefault();
@@ -49,4 +48,4 @@ function App({ classes }: any) {
 }
 
 const styles = {};
-export default withStyles(styles)(App);
+export default App;
