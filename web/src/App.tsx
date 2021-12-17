@@ -1,4 +1,4 @@
-import { Container, Paper } from "@mui/material";
+import { Container } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import "./App.css";
 
@@ -47,5 +47,4 @@ function App() {
   );
 }
 
-const styles = {};
 export default App;
