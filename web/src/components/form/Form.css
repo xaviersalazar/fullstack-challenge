@@ -1,0 +1,13 @@
+.item-form {
+  display: flex;
+  justify-content: center;
+}
+
+.item-form > div {
+  flex: 1;
+  margin-right: 12px;
+}
+
+.add-button {
+  background: #0984e3 !important;
+}

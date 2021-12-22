@@ -1,0 +1,27 @@
+.todo-container {
+  display: block;
+  text-transform: lowercase;
+  padding: 32px 18px;
+  margin: 24px 48px;
+  border-radius: 8px;
+}
+
+.todo-item {
+  display: flex;
+  justify-content: center;
+}
+
+.todo-item > h4 {
+  flex: 1;
+}
+
+.arrow-up:hover,
+.arrow-down:hover,
+.cancel:hover,
+.save:hover {
+  background-color: transparent !important;
+}
+
+h4:hover {
+  cursor: pointer;
+}

@@ -1,48 +1,62 @@
-import { Container } from "@mui/material";
 import React, { useEffect, useState } from "react";
+import { Container, Box } from "@mui/material";
+import { Todo } from "./components/todo/Todo";
+import { Form } from "./components/form/Form";
+import { editTodo, getTodos, postTodo, resortTodos } from "./api";
 import "./App.css";
 
 type Todo = {
   id?: number;
   name: string;
   completed: boolean;
+  sort: number;
 };
 
 function App() {
   const [todos, setTodos] = useState<Array<Todo>>([]);
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
-    const todo = {
-      name: e.target.name.value,
-      completed: false,
-    };
-    e.target.name.value = "";
-
-    // TODO: Write to the database and update the list of todos
-    console.log(todo);
-  };
-
-  const getTodos = async () => {
-    return fetch("http://localhost:5000/todos")
-      .then((res) => res.json())
-      .then((res) => res.items);
-  };
 
   useEffect(() => {
-    getTodos().then(setTodos);
+    getTodos()
+      .then((res) => {
+        if (res) {
+          setTodos(res)
+        }
+      });
   }, []);
+  
+  const addTodo = (todo: Todo) => {
+    postTodo(todo)
+      .then((res) => setTodos(res));
+  }
+
+  const updateTodo = (todo: Todo) => {
+    editTodo(todo)
+      .then((res) => setTodos(res));
+  };
+
+  const sortTodos = (todo: Todo) => {
+    resortTodos(todo)
+      .then((res) => setTodos(res));
+  }
 
   return (
-    <Container>
-      <ul>
-        {todos.map((item: any) => (
-          <li key={item.id}>{item.name}</li>
-        ))}
-      </ul>
-      <form onSubmit={handleSubmit} method="post">
-        <input name="name" type="text" />
-        <input type="submit" value="Add an Item" />
-      </form>
+    <Container className="main-container">
+      <h1 className="heading">todos</h1>
+      <Container maxWidth="md">
+        <Form addTodo={addTodo} />
+        {todos.length > 0 ? (
+          <Box>
+            {todos.map((item: Todo, i: number) => (
+              <Todo 
+                key={item.id}
+                updateTodo={updateTodo} 
+                sortTodos={sortTodos}
+                isLastItem={i === todos.length - 1} 
+                {...item} />
+            ))}
+          </Box>
+        ) : <h4>No items added yet</h4>}
+      </Container>
     </Container>
   );
 }
